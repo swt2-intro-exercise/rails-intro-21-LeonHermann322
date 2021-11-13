@@ -3,7 +3,7 @@ require 'rails_helper'
 describe 'Index page', type: :feature do
     it 'should render correctly' do
         @alan = FactoryBot.create :author
-        visit authors_index
+        visit authors_url
         expect(page).to have_text 'Name'
         expect(page).to have_text 'Homepage'
         expect(page).to have_text "Alan Turing"
