@@ -24,10 +24,9 @@ describe "New author page", type: :feature do
         expect(Author.where(first_name: "Alan", last_name: "Turing", homepage: "http://wikipedia.org/Alan_Turing").blank?).to be false
     end
 
-    it 'should reject entries without a last name' do
-        author_blank = Author.new
-        author_short = Author.new(last_name: "")
-        expect(author_blank).to_not be_valid
-        expect(author_short).to_not be_valid
+    it 'should communicate validation errors to the user' do
+        visit new_author_path
+        find('input[type="submit"]').click
+        expect(page).to have_text('error')
     end
 end
