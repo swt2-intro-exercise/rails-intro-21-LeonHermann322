@@ -1,5 +1,12 @@
 require 'rails_helper'
 
 RSpec.describe Paper, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  it 'should not validate without all attributes set' do
+    @paper = Paper.new(title: "a", venue: "b")
+    expect(@paper).to_not be_valid
+    @paper = Paper.new(title: "a", year: 1)
+    expect(@paper).to_not be_valid
+    @paper = Paper.new(venue: "a", venue: "b")
+    expect(@paper).to_not be_valid
+  end
 end
