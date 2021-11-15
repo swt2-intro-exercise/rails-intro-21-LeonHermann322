@@ -16,4 +16,9 @@ RSpec.describe Paper, type: :model do
     @paper = Paper.new(title: "a", venue: "b", year: 1)
     expect(@paper).to be_valid
   end
+
+  it 'should have an empty list of authors by default' do
+    @paper = FactoryBot.create :paper
+    expect(@paper.authors).to be_empty
+  end
 end
